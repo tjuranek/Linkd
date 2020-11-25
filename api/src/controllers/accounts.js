@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { getAccountByEmail } from '../services/accounts/queries/get-account-by-email.js';
 
 export const AccountsRouter = new Router();
 
@@ -22,8 +23,7 @@ AccountsRouter.post('/register', (req, res) => {
  * Generates and returns a new access token for a user given valid credentials.
  */
 AccountsRouter.post('/login', (req, res) => {
-	// logs in a new user
-	// generates token
+	return getAccountByEmail(req.email);
 });
 
 /**
