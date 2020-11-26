@@ -1,7 +1,11 @@
-import { Router } from 'express';
+import express from 'express';
 import { getAccountByEmail } from '../services/accounts/queries/get-account-by-email.js';
 
-export const AccountsRouter = new Router();
+export const AccountsRouter = new express.Router();
+
+AccountsRouter.get('/test', (req, res) => {
+	res.send(200);
+});
 
 /**
  * Validates an existing access token, generates and returns a new access token with a reset expiration date.
@@ -22,8 +26,13 @@ AccountsRouter.post('/register', (req, res) => {
 /**
  * Generates and returns a new access token for a user given valid credentials.
  */
-AccountsRouter.post('/login', (req, res) => {
-	return getAccountByEmail(req.email);
+AccountsRouter.post('/login', async (req, res) => {
+	try {
+		console.log(req.body);
+		return await getAccountByEmail(req.body.email);
+	} catch (err) {
+		console.log(err);
+	}
 });
 
 /**
