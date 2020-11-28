@@ -1,4 +1,5 @@
 import express from 'express';
+import { createAccount } from '../services/accounts/commands/create-account.js';
 import { getAccountByEmail } from '../services/accounts/queries/get-account-by-email.js';
 
 export const AccountsRouter = new express.Router();
@@ -18,9 +19,15 @@ AccountsRouter.get('/token', (req, res) => {
 /**
  * Creates a new user from a given email and password, returning a newly generated access token for the user.
  */
-AccountsRouter.post('/register', (req, res) => {
-	// creates a new user
-	// generates token
+AccountsRouter.post('/register', async (req, res) => {
+	try {
+		const { email, password } = req.body;
+
+		await createAccount(email, password);
+		res.sendStatus(200);
+	} catch (err) {
+		res.sendStatus(500);
+	}
 });
 
 /**
@@ -29,9 +36,12 @@ AccountsRouter.post('/register', (req, res) => {
 AccountsRouter.post('/login', async (req, res) => {
 	try {
 		console.log(req.body);
-		return await getAccountByEmail(req.body.email);
+		const account = await getAccountByEmail(req.body.email);
+
+		res.status(account ? 200 : 400).send({ account });
 	} catch (err) {
-		console.log(err);
+		console.log('error here: ' + err);
+		res.sendStatus(400);
 	}
 });
 

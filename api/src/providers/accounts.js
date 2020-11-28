@@ -5,7 +5,5 @@ export const createAccount = async (email, password) => {
 };
 
 export const getAccount = async email => {
-	const user = await Account.findOne({ email }).exec();
-	if (user) return user;
-	throw new Error('User not found.');
+	return await Account.findOne({ email }).exec();
 };
