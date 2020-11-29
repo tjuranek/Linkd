@@ -1,4 +1,4 @@
-import { getAccount } from '../../../providers/accounts.js';
+import { getAccount } from '../../../providers/accounts-provider.js';
 
 export const getAccountByEmail = async email => {
 	if (!email) throw new Error('Invalid email address');

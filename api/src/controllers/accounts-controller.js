@@ -1,6 +1,5 @@
 import express from 'express';
-import { createAccount } from '../services/accounts/commands/create-account.js';
-import { getAccountByEmail } from '../services/accounts/queries/get-account-by-email.js';
+import { AccountsService }
 
 export const AccountsRouter = new express.Router();
 
