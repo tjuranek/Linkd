@@ -1,7 +1,9 @@
 import express from 'express';
-import { AccountsService }
+import { AccountsService } from '../services/accounts-service.js';
 
 export const AccountsRouter = new express.Router();
+
+const accountsService = new AccountsService();
 
 AccountsRouter.get('/test', (req, res) => {
 	res.send(200);
@@ -22,7 +24,7 @@ AccountsRouter.post('/register', async (req, res) => {
 	try {
 		const { email, password } = req.body;
 
-		await createAccount(email, password);
+		await accountsService.createAccount(email, password);
 		res.sendStatus(200);
 	} catch (err) {
 		res.sendStatus(500);
@@ -35,7 +37,7 @@ AccountsRouter.post('/register', async (req, res) => {
 AccountsRouter.post('/login', async (req, res) => {
 	try {
 		console.log(req.body);
-		const account = await getAccountByEmail(req.body.email);
+		const account = await accountsService.getAccount(req.body.email);
 
 		res.status(account ? 200 : 400).send({ account });
 	} catch (err) {
