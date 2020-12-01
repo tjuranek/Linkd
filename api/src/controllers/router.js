@@ -17,4 +17,3 @@ MainRouter.use(testing);
 MainRouter.use(error);
 
 MainRouter.use('/accounts', AccountsRouter);
-linked;
