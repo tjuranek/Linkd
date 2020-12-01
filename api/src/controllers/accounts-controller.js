@@ -15,6 +15,8 @@ AccountsRouter.get('/test', (req, res) => {
 AccountsRouter.get('/token', (req, res) => {
 	// get token from req header
 	// return newly generated token if req token is valid
+
+	throw new Error('what are you sinking about');
 });
 
 /**
@@ -36,7 +38,6 @@ AccountsRouter.post('/register', async (req, res) => {
  */
 AccountsRouter.post('/login', async (req, res) => {
 	try {
-		console.log(req.body);
 		const account = await accountsService.getAccount(req.body.email);
 
 		res.status(account ? 200 : 400).send({ account });
