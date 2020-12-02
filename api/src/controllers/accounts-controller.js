@@ -1,51 +1,41 @@
 import express from 'express';
 import { AccountsService } from '../services/accounts-service.js';
+import { PasswordService } from '../services/password-service.js';
 import { TokensService } from '../services/tokens-service.js';
 
 export const AccountsRouter = new express.Router();
 
 const accountsService = new AccountsService();
+const passwordService = new PasswordService();
 const tokensService = new TokensService();
-
-/**
- * Validates an existing access token, generates and returns a new access token with a reset expiration date.
- */
-AccountsRouter.get('/token', async (req, res) => {
-	const token = await tokensService.generateToken({ id: 1234 });
-	res.status(200).json({ token });
-
-	// get token from req header
-	// return newly generated token if req token is valid
-});
 
 /**
  * Creates a new user from a given email and password, returning a newly generated access token for the user.
  */
 AccountsRouter.post('/register', async (req, res) => {
 	const { email, password } = req.body;
-	const { _id } = await accountsService.createAccount(email, password);
+	const hash = await passwordService.generatePassword(password);
+	const { _id } = await accountsService.createAccount(email, hash);
 	const token = await tokensService.generateToken({ id: _id });
 
-	res.status(200).json({ token });
+	return res.status(200).json({ token });
 });
 
 /**
  * Generates and returns a new access token for a user given valid credentials.
  */
 AccountsRouter.post('/login', async (req, res) => {
-	try {
-		const account = await accountsService.getAccount(req.body.email);
+	const { email, password } = req.body;
+	const account = await accountsService.getAccount(email);
+	const isValidPassword = await passwordService.verifyPassword(
+		password,
+		account.password
+	);
 
-		res.status(account ? 200 : 400).send({ account });
-	} catch (err) {
-		console.log('error here: ' + err);
-		res.sendStatus(400);
+	if (isValidPassword) {
+		const token = await tokensService.generateToken({ id: account._id });
+		return res.status(200).json({ token });
 	}
-});
 
-/**
- * Records a user logout stat.
- */
-AccountsRouter.post('/logout', (req, res) => {
-	// record logout event
+	return res.sendStatus(400);
 });
