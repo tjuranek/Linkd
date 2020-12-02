@@ -1,14 +1,12 @@
 import jwt from 'jsonwebtoken';
 
-export class TokensService {
-	constructor() {
-		this.tokenDuration = process.env.TOKEN_DURATION;
-		this.tokenSecret = process.env.TOKEN_SECRET;
-	}
+const tokenDuration = process.env.TOKEN_DURATION;
+const tokenSecret = process.env.TOKEN_SECRET;
 
+export class TokensService {
 	generateToken = async user => {
-		return await jwt.sign(user, this.tokenSecret, {
-			expiresIn: this.tokenDuration
+		return await jwt.sign(user, tokenSecret, {
+			expiresIn: tokenDuration
 		});
 	};
 
