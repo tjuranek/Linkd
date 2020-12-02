@@ -1,11 +1,7 @@
-import dotenv from 'dotenv';
 import express from 'express';
 import { connectToDatabase } from './src/db/connection.js';
 import { MainRouter } from './src/controllers/router.js';
 import { logger } from './src/middleware/logger-middleware.js';
-
-// load .env values into process.env
-dotenv.config();
 
 // setup express app
 const app = express();

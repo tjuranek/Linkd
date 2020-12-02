@@ -1,22 +1,21 @@
 import express from 'express';
 import { AccountsService } from '../services/accounts-service.js';
+import { TokensService } from '../services/tokens-service.js';
 
 export const AccountsRouter = new express.Router();
 
 const accountsService = new AccountsService();
-
-AccountsRouter.get('/test', (req, res) => {
-	res.send(200);
-});
+const tokensService = new TokensService();
 
 /**
  * Validates an existing access token, generates and returns a new access token with a reset expiration date.
  */
-AccountsRouter.get('/token', (req, res) => {
+AccountsRouter.get('/token', async (req, res) => {
+	const token = await tokensService.generateToken({ id: 1234 });
+	res.status(200).json({ token });
+
 	// get token from req header
 	// return newly generated token if req token is valid
-
-	throw new Error('what are you sinking about');
 });
 
 /**
