@@ -5,13 +5,13 @@ import { Account } from '../db/models/account.js';
  */
 export class AccountsProvider {
 	/**
-	 * Creates a new account with a provided email and password.
+	 * Creates a new account with a provided email and password, returning the created object.
 	 *
 	 * @param {string} email
 	 * @param {string} password
 	 */
 	createAccount = async (email, password) => {
-		await Account({ email, password }).save();
+		return await Account({ email, password }).save();
 	};
 
 	/**

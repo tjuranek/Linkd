@@ -22,14 +22,11 @@ AccountsRouter.get('/token', async (req, res) => {
  * Creates a new user from a given email and password, returning a newly generated access token for the user.
  */
 AccountsRouter.post('/register', async (req, res) => {
-	try {
-		const { email, password } = req.body;
+	const { email, password } = req.body;
+	const { _id } = await accountsService.createAccount(email, password);
+	const token = await tokensService.generateToken({ id: _id });
 
-		await accountsService.createAccount(email, password);
-		res.sendStatus(200);
-	} catch (err) {
-		res.sendStatus(500);
-	}
+	res.status(200).json({ token });
 });
 
 /**
