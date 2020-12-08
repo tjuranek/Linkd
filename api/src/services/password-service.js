@@ -1,9 +1,13 @@
 import bcrypt from 'bcrypt';
 
+export function generatePassword(password) {
+	const salt = await bcrypt.genSalt(10);
+	return bcrypt.hash(password, salt);
+}
+
 export class PasswordService {
 	generatePassword = async password => {
-		const salt = await bcrypt.genSalt(10);
-		return await bcrypt.hash(password, salt);
+		
 	};
 
 	verifyPassword = async (password, hash) => {

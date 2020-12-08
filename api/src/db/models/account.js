@@ -11,4 +11,7 @@ const accountSchema = new mongoose.Schema({
 	}
 });
 
+// T_o_D_o: this
+accountSchema.methods
+
 export const Account = mongoose.model('accounts', accountSchema);
