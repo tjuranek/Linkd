@@ -1,8 +1,12 @@
 import React from 'react';
+import { Provider, useSelector } from 'react-redux';
+import { store } from './store/index';
 import { render } from 'react-dom';
 import { Heading } from './components/heading';
 
 const App = () => {
+	const test = useSelector(state => state);
+	console.log(test);
 	return (
 		<div>
 			<Heading />
@@ -11,4 +15,9 @@ const App = () => {
 	);
 };
 
-render(<App />, document.getElementById('root'));
+render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById('root')
+);
