@@ -9,8 +9,4 @@ export const MainRouter = new express.Router();
 
 MainRouter.use('/accounts', AccountsRouter);
 
-MainRouter.get('/test', (req, res) => {
-	throw new Error('testingtesting123');
-});
-
 MainRouter.use(errorHandler);

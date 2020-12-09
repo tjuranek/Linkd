@@ -1,39 +1,9 @@
-import { AccountMongooseModel } from '../db/models/account';
+import { Account } from '../db/models/account.js';
 
-export const AccountModel = AccountMongooseModel;
+export const createAccount = async (email, password) => {
+	return await Account({ email, password }).save();
+};
 
-
-
-export {
-	...AccountModel,
-	createAccount
-}
-
-export AccountMongooseModel;
-
-async function createAccount(email, password) {
-	return accountsService.createAccount(email, password);
-} 
-
-accountsService.createAccount = createAccount;
-
-
-
-import { accountsService } from 'whatever';
-
-accountsService.createAccount();
-
-
-// export class AccountsService {
-// 	constructor() {
-// 		this.accountsProvider = new AccountsProvider();
-// 	}
-
-	// createAccount = async (email, password) => {
-	// 	return this.accountsProvider.createAccount(email, password);
-	// };
-
-// 	getAccount = async email => {
-// 		return await this.accountsProvider.getAccount(email);
-// 	};
-// }
+export const getAccountByEmail = async email => {
+	return await Account.findOne({ email }).exec();
+};
