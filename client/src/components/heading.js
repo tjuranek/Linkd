@@ -7,9 +7,6 @@ export const Heading = () => {
 
 	const handleClick = async () => {
 		const token = await post('http://localhost:1234/accounts/createghost');
-
-		debugger;
-
 		setToken(token);
 	};
 
