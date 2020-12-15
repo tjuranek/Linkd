@@ -4,7 +4,7 @@ import {
 	getAccountByEmail,
 	registerAccount
 } from '../services/accounts-service.js';
-import { testEmail } from '../services/email-service.js';
+import { sendEmail } from '../services/email-service.js';
 import {
 	generatePassword,
 	verifyPassword
@@ -16,7 +16,8 @@ import { generateToken } from '../services/tokens-service.js';
  */
 export const createGhostAccountAction = async () => {
 	const { id } = await createGhostAccount();
-	await testEmail();
+	const html = `<strong>Your id is: ${id}</strong>`;
+	await sendEmail(html);
 
 	return await generateToken(id);
 };

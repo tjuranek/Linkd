@@ -1,19 +1,15 @@
 import sendgrid from '@sendgrid/mail';
 
-export const testEmail = async () => {
-	sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+// TODO: look into sendgrid templates
 
+sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+
+export const sendEmail = async html => {
 	const message = {
 		to: 'thomas@juranek.com',
 		from: 'dev@thomasjuranek.com',
 		subject: 'SENDGRID TEST',
-		text: 'this is some text',
-		html: '<strong>strong text is better than non strong text</strong>'
+		html
 	};
-
-	try {
-		await sendgrid.send(message);
-	} catch (error) {
-		throw error;
-	}
+	await sendgrid.send(message);
 };
