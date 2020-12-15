@@ -6,10 +6,7 @@ export const Heading = () => {
 	const [token, setToken] = useState('');
 
 	const handleClick = async () => {
-		const token = await post('http://localhost:1234/accounts/login', {
-			email: 'vimiscool@gmail.com',
-			password: 'emacssucks'
-		});
+		const token = await post('http://localhost:1234/accounts/createghost');
 
 		debugger;
 
