@@ -1,6 +1,7 @@
 import express from 'express';
 import {
 	createAccount,
+	createGhostAccount,
 	getAccountByEmail
 } from '../services/accounts-service.js';
 import {
@@ -10,6 +11,14 @@ import {
 import { generateToken } from '../services/tokens-service.js';
 
 export const AccountsRouter = new express.Router();
+
+/**
+ * Creates a new ghost account, returning a newly generated access token.
+ */
+AccountsRouter.post('/create/ghost', async (req, res) => {
+	const account = await createGhostAccount();
+	return res.status(200).json({ account });
+});
 
 /**
  * Creates a new user from a given email and password, returning a newly generated access token for the user.
