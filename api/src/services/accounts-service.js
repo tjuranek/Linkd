@@ -1,13 +1,10 @@
 import { Account } from '../db/models/account.js';
+import { ACCOUNT_TYPES } from '../constants/account-types.js';
 
 export const createGhostAccount = async () => {
-	return new Account().save();
+	return await new Account().save();
 };
 
-export const createAccount = async (email, password) => {
-	return await Account({ email, password }).save();
-};
-
-export const getAccountByEmail = async email => {
-	return await Account.findOne({ email }).exec();
+export const registerAccount = async (id, email, password) => {
+	await Account.findByIdAndUpdate(id, { email, password });
 };

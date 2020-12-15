@@ -1,41 +1,35 @@
 import express from 'express';
 import {
-	createAccount,
-	createGhostAccount,
-	getAccountByEmail
-} from '../services/accounts-service.js';
-import {
-	generatePassword,
-	verifyPassword
-} from '../services/password-service.js';
-import { generateToken } from '../services/tokens-service.js';
+	createGhostAccountAction,
+	registerAccountAction
+} from '../actions/accounts-actions.js';
 
 export const AccountsRouter = new express.Router();
 
 /**
- * Creates a new ghost account, returning a newly generated access token.
+ * Creates a new ghost account, returning a new access token.
  */
 AccountsRouter.post('/create/ghost', async (req, res) => {
-	const account = await createGhostAccount();
-	return res.status(200).json({ account });
+	const token = await createGhostAccountAction();
+	return res.status(200).json({ token });
 });
 
 /**
- * Creates a new user from a given email and password, returning a newly generated access token for the user.
+ * Converts a ghost account into a user account, saving a passed email and password, returning a new access token.
  */
 AccountsRouter.post('/register', async (req, res) => {
+	//const { userId } = req.userId;
+	const userId = '5fd829f26f5a6e4ad0b043a5';
 	const { email, password } = req.body;
-	const hash = await generatePassword(password);
-	const { _id } = await createAccount(email, hash);
-	const token = await generateToken({ id: _id });
 
+	const token = await registerAccountAction(userId, email, password);
 	return res.status(200).json({ token });
 });
 
 /**
  * Generates and returns a new access token for a user given valid credentials.
  */
-AccountsRouter.post('/login', async (req, res) => {
+/* AccountsRouter.post('/login', async (req, res) => {
 	const { email, password } = req.body;
 	const account = await getAccountByEmail(email);
 	const isValidPassword = await verifyPassword(password, account.password);
@@ -48,4 +42,4 @@ AccountsRouter.post('/login', async (req, res) => {
 	}
 
 	return res.sendStatus(400);
-});
+}); */

@@ -3,12 +3,12 @@ import jwt from 'jsonwebtoken';
 const tokenDuration = process.env.TOKEN_DURATION;
 const tokenSecret = process.env.TOKEN_SECRET;
 
-export const generateToken = async user => {
-	return await jwt.sign(user, tokenSecret, {
+export const generateToken = async id => {
+	return await jwt.sign({ id }, tokenSecret, {
 		expiresIn: tokenDuration
 	});
 };
 
-export const verifyToken = async token => {
-	return await jwt.verify(token, this.tokenSecret);
+export const verifyToken = async id => {
+	return await jwt.verify({ id }, this.tokenSecret);
 };
