@@ -9,6 +9,6 @@ export const generateToken = async id => {
 	});
 };
 
-export const verifyToken = async id => {
-	return await jwt.verify({ id }, this.tokenSecret);
+export const verifyToken = async token => {
+	return await jwt.verify(token, tokenSecret);
 };
