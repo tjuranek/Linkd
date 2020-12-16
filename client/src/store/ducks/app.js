@@ -7,7 +7,7 @@ const initialState = {
 export const app = (state = initialState, action = {}) => {
 	switch (action.type) {
 		case SET_TOKEN: {
-			return { ...state, token: action.payload };
+			return { ...state, ...action.payload };
 		}
 		default: {
 			return state;
@@ -16,5 +16,5 @@ export const app = (state = initialState, action = {}) => {
 };
 
 export const setToken = token => {
-	return { type: SET_TOKEN, token };
+	return { type: SET_TOKEN, payload: { token } };
 };
