@@ -17,7 +17,7 @@ import { generateToken } from '../services/tokens-service.js';
 export const createGhostAccountAction = async () => {
 	const { id } = await createGhostAccount();
 	const html = `<strong>Your id is: ${id}</strong>`;
-	await sendEmail(html);
+	//await sendEmail(html);
 
 	return await generateToken(id);
 };

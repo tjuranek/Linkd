@@ -12,18 +12,8 @@ const App = () => {
 	const dispatch = useDispatch();
 	const token = useSelector(state => state.app.token);
 
-	const getToken = async () => {
-		const response = await axios({
-			method: 'post',
-			url: 'http://localhost:1234/accounts/createghost'
-		});
-
-		const token = response.data.token;
-		dispatch(setToken(token));
-	};
-
 	useEffect(() => {
-		getToken();
+		dispatch(setToken());
 	}, []);
 
 	return <p>Token: {token}</p>;
