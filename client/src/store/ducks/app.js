@@ -17,7 +17,7 @@ export const app = (state = initialState, action = {}) => {
 	}
 };
 
-export const setToken = () => {
+export const getToken = () => {
 	return async dispatch => {
 		const response = await axios({
 			method: 'post',
@@ -26,6 +26,11 @@ export const setToken = () => {
 
 		const token = response.data.token;
 
+		localStorage.setItem('token', token);
 		dispatch({ type: SET_TOKEN, payload: { token } });
 	};
+};
+
+export const setToken = token => {
+	return { type: SET_TOKEN, payload: { token } };
 };
