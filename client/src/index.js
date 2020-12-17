@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 
 import { getToken, setToken } from './store/ducks/app';
+import { registerAccount } from './store/ducks/account';
 
 import { store } from './store/index';
 import { render } from 'react-dom';
@@ -15,7 +16,20 @@ const App = () => {
 		lsToken ? dispatch(setToken(lsToken)) : dispatch(getToken());
 	}, []);
 
-	return <p>Token: {token}</p>;
+	const handleRegister = () => {
+		if (!token) {
+			alert('ya done messed up a-aron');
+		}
+
+		dispatch(registerAccount());
+	};
+
+	return (
+		<div>
+			<p>Token: {token}</p>
+			<button onClick={handleRegister}>Register</button>
+		</div>
+	);
 };
 
 render(
