@@ -4,7 +4,13 @@ const path = require('path');
 module.exports = {
 	devServer: {
 		open: true,
-		port: 2000
+		port: 2000,
+		historyApiFallback: true
+	},
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'index_bundle.js',
+		publicPath: '/'
 	},
 	devtool: 'eval-source-map',
 	module: {

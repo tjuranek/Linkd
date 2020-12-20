@@ -7,7 +7,9 @@ import { registerAccount } from './store/ducks/account';
 import { store } from './store/index';
 import { render } from 'react-dom';
 
-const App = () => {
+import { AppRouter } from './router';
+
+/* const App = () => {
 	const dispatch = useDispatch();
 	const token = useSelector(state => state.app.token);
 
@@ -30,11 +32,11 @@ const App = () => {
 			<button onClick={handleRegister}>Register</button>
 		</div>
 	);
-};
+}; */
 
 render(
 	<Provider store={store}>
-		<App />
+		<AppRouter />
 	</Provider>,
 	document.getElementById('root')
 );
