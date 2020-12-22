@@ -23,7 +23,7 @@ export const registerAccount = (firstName, lastName, email, password) => {
 
 		const response = await axios({
 			method: 'post',
-			url: 'http://localhost:1234/accounts/register',
+			url: 'https://linkd-api.herokuapp.com/accounts/register',
 			data: { email: 'test@test.com', password: 'password' },
 			headers: {
 				Authorization: `Bearer ${token}`,
