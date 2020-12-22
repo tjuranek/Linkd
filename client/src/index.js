@@ -9,7 +9,7 @@ import { render } from 'react-dom';
 
 import { AppRouter } from './router';
 
-/* const App = () => {
+const App = () => {
 	const dispatch = useDispatch();
 	const token = useSelector(state => state.app.token);
 
@@ -32,11 +32,12 @@ import { AppRouter } from './router';
 			<button onClick={handleRegister}>Register</button>
 		</div>
 	);
-}; */
+};
 
 render(
 	<Provider store={store}>
-		<AppRouter />
+		<App />
+		{/* 		<AppRouter /> */}
 	</Provider>,
 	document.getElementById('root')
 );
