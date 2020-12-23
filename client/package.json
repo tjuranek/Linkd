@@ -9,7 +9,7 @@
 		"build": "webpack --mode production"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "tjuranek",
 	"license": "ISC",
 	"dependencies": {
 		"@material-ui/core": "^4.11.2",
