@@ -40,11 +40,19 @@ export const loginAccountAction = async (email, password) => {
  *
  * @param {Number} id
  * @param {String} email
+ * @param {String} firstName
+ * @param {String} lastName
  * @param {String} password
  */
-export const registerAccountAction = async (id, email, password) => {
+export const registerAccountAction = async (
+	id,
+	email,
+	firstName,
+	lastName,
+	password
+) => {
 	const hash = await generatePassword(password);
-	await registerAccount(id, email, hash);
+	await registerAccount(id, email, firstName, lastName, hash);
 
 	return await generateToken(id);
 };

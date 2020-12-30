@@ -21,7 +21,7 @@ export const getToken = () => {
 	return async dispatch => {
 		const response = await axios({
 			method: 'post',
-			url: 'https://linkd-api.herokuapp.com/accounts/createghost'
+			url: 'http://localhost:1234/accounts/createghost'
 		});
 
 		const token = response.data.token;

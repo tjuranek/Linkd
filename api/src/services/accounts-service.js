@@ -23,12 +23,22 @@ export const getAccountByEmail = async email => {
  *
  * @param {Number} id
  * @param {String} email
+ * @param {String} firstName
+ * @param {String} lastName
  * @param {String} password
  */
-export const registerAccount = async (id, email, password) => {
+export const registerAccount = async (
+	id,
+	email,
+	firstName,
+	lastName,
+	password
+) => {
 	await Account.findByIdAndUpdate(id, {
 		dateRegistered: getUTCDateTime(),
 		email,
+		firstName,
+		lastName,
 		password,
 		type: ACCOUNT_TYPES.USER
 	});

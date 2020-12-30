@@ -31,8 +31,14 @@ AccountsRouter.get('/login', async (req, res) => {
  * Converts a ghost account into a user account, saving a passed email and password, returning a new access token.
  */
 AccountsRouter.post('/register', async (req, res) => {
-	const { email, password } = req.body;
-	const token = await registerAccountAction(req.userId, email, password);
+	const { email, firstName, lastName, password } = req.body;
+	const token = await registerAccountAction(
+		req.userId,
+		email,
+		firstName,
+		lastName,
+		password
+	);
 
 	return res.status(200).json({ token });
 });
