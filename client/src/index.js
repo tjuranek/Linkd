@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 
 import { getToken, setToken } from './store/ducks/app';
-import { registerAccount } from './store/ducks/account';
+import { getAccountInfo, registerAccount } from './store/ducks/account';
 
 import { store } from './store/index';
 import { render } from 'react-dom';
@@ -26,10 +26,15 @@ const App = () => {
 		dispatch(registerAccount());
 	};
 
+	const handleInfo = () => {
+		dispatch(getAccountInfo());
+	};
+
 	return (
 		<div>
 			<p>Token: {token}</p>
 			<button onClick={handleRegister}>Register</button>
+			<button onClick={handleInfo}>Info</button>
 		</div>
 	);
 };

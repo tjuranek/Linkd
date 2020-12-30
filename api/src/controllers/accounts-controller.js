@@ -2,6 +2,7 @@ import express from 'express';
 import {
 	createGhostAccountAction,
 	deleteAccountAction,
+	getAccountInfoAction,
 	loginAccountAction,
 	registerAccountAction
 } from '../actions/accounts-actions.js';
@@ -41,6 +42,12 @@ AccountsRouter.post('/register', async (req, res) => {
 	);
 
 	return res.status(200).json({ token });
+});
+
+AccountsRouter.get('/info', async (req, res) => {
+	const account = await getAccountInfoAction(req.userId);
+
+	return res.status(200).json({ account });
 });
 
 /**

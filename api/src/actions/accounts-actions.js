@@ -2,6 +2,7 @@ import {
 	createGhostAccount,
 	deleteAccount,
 	getAccountByEmail,
+	getAccountById,
 	registerAccount
 } from '../services/accounts-service.js';
 import { sendEmail } from '../services/email-service.js';
@@ -33,6 +34,10 @@ export const loginAccountAction = async (email, password) => {
 	const isValidPassword = await verifyPassword(password, account.password);
 
 	return isValidPassword ? await generateToken(account.id) : undefined;
+};
+
+export const getAccountInfoAction = async id => {
+	return await getAccountById(id);
 };
 
 /**

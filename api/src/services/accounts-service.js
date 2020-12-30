@@ -10,6 +10,14 @@ export const createGhostAccount = async () => {
 };
 
 /**
+ *
+ * @param {Number} id
+ */
+export const getAccountById = async id => {
+	return await Account.findById(id);
+};
+
+/**
  * Finds and returns an account by email.
  *
  * @param {String} email
