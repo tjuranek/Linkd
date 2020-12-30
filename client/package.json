@@ -4,11 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "webpack --mode development",
-		"start-dev": "webpack serve",
+		"dev": "webpack serve",
 		"start": "node server.js",
-		"heroku-postbuild": "webpack -p",
-		"build": "webpack --mode production"
+		"heroku-postbuild": "webpack -p"
 	},
 	"keywords": [],
 	"author": "tjuranek",
