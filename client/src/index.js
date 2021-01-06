@@ -8,6 +8,7 @@ import { store } from './store/index';
 import { render } from 'react-dom';
 
 import { AppRouter } from './router';
+import { AppLoader } from './AppLoader';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -39,9 +40,13 @@ const App = () => {
 	);
 };
 
+const Loading = () => <div>LOADING</div>;
+
 render(
 	<Provider store={store}>
-		<App />
+		<AppLoader loadingComponent={<Loading />} minimumLoadingTime={2500}>
+			<App></App>
+		</AppLoader>
 		{/* 		<AppRouter /> */}
 	</Provider>,
 	document.getElementById('root')
