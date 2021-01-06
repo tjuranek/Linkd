@@ -8,10 +8,7 @@ export const AppLoader = props => {
 	);
 
 	useEffect(() => {
-		setTimeout(() => {
-			debugger;
-			setMinimumDurationPassed(true);
-		}, minimumLoadingTime);
+		setTimeout(() => setMinimumDurationPassed(true), minimumLoadingTime);
 	}, []);
 
 	if (!minimumDurationPassed) {
