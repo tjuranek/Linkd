@@ -3,7 +3,8 @@ import axios from 'axios';
 const SET_TOKEN = 'SET_TOKEN';
 
 const initialState = {
-	token: ''
+	token: '',
+	isLoaded: false
 };
 
 export const app = (state = initialState, action = {}) => {
@@ -32,5 +33,8 @@ export const getToken = () => {
 };
 
 export const setToken = token => {
-	return { type: SET_TOKEN, payload: { token } };
+	return { type: SET_TOKEN, payload: { token, isLoaded: true } };
+	// todo: call check ready
 };
+
+// todo: determine if both apis are loaded with a checkReady() function

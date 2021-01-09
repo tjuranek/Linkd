@@ -14,10 +14,10 @@ const App = () => {
 	const dispatch = useDispatch();
 	const token = useSelector(state => state.app.token);
 
-	useEffect(() => {
+	/* 	useEffect(() => {
 		const lsToken = localStorage.getItem('token');
 		lsToken ? dispatch(setToken(lsToken)) : dispatch(getToken());
-	}, []);
+	}, []); */
 
 	const handleRegister = () => {
 		if (!token) {
