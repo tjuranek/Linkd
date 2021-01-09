@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { LinearProgress } from '@material-ui/core';
 
 export const AppLoader = props => {
-	const { loadingComponent, minimumLoadingTime } = props;
+	const { minimumLoadingTime } = props;
 	const isReady = useSelector(state => state.app.isLoaded);
 
 	const [minimumDurationPassed, setMinimumDurationPassed] = useState(
@@ -17,5 +18,5 @@ export const AppLoader = props => {
 		return props.children;
 	}
 
-	return loadingComponent;
+	return <LinearProgress />;
 };
