@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "webpack serve",
+		"dev": "webpack serve --env development --config webpack.config.dev.js",
 		"start": "node server.js",
 		"heroku-postbuild": "webpack --mode production"
 	},
@@ -19,6 +19,7 @@
 		"axios": "^0.21.0",
 		"babel-loader": "^8.2.2",
 		"css-loader": "^5.0.1",
+		"dotenv-webpack": "^6.0.0",
 		"express": "^4.17.1",
 		"html-webpack-plugin": "^4.5.0",
 		"react": "^17.0.1",

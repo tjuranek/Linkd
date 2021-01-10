@@ -1,16 +1,15 @@
 import axios from 'axios';
 
-const SET_TOKEN = 'SET_TOKEN';
+const SET_IS_LOADED = 'SET_IS_LOADED';
 
 const initialState = {
-	token: '',
 	isLoaded: false
 };
 
 export const app = (state = initialState, action = {}) => {
 	switch (action.type) {
-		case SET_TOKEN: {
-			return { ...state, ...action.payload };
+		case SET_IS_LOADED: {
+			return { ...state, isLoaded: true };
 		}
 		default: {
 			return state;
@@ -28,13 +27,10 @@ export const getToken = () => {
 		const token = response.data.token;
 
 		localStorage.setItem('token', token);
-		dispatch({ type: SET_TOKEN, payload: { token } });
+		dispatch({ type: SET_IS_LOADED, payload: { token } });
 	};
 };
 
 export const setToken = token => {
-	return { type: SET_TOKEN, payload: { token, isLoaded: true } };
-	// todo: call check ready
+	return { type: SET_IS_LOADED, payload: { token, isLoaded: true } };
 };
-
-// todo: determine if both apis are loaded with a checkReady() function

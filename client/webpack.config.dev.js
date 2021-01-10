@@ -13,6 +13,7 @@ module.exports = {
 		filename: 'index_bundle.js',
 		publicPath: '/'
 	},
+	devtool: 'eval-source-map',
 	module: {
 		rules: [
 			{
@@ -34,7 +35,7 @@ module.exports = {
 	},
 	plugins: [
 		new Dotenv({
-			systemvars: true
+			path: './.env.dev'
 		}),
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, 'src', 'index.html')

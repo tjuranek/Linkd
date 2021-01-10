@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 export const Home = () => {
-	const [state, setState] = useState();
+	const isLoaded = useSelector(state => state.app.isLoaded);
 
-	return <h1>Home</h1>;
+	return (
+		<div>
+			{process.env.API_URL}
+			<p>{isLoaded.toString()}</p>
+		</div>
+	);
 };
