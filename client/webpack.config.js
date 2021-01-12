@@ -16,8 +16,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.css$/,
-				include: path.resolve(__dirname, 'src'),
+				test: /\.(css)$/,
 				use: ['style-loader', 'css-loader']
 			},
 			{
@@ -39,5 +38,8 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, 'src', 'index.html')
 		})
-	]
+	],
+	resolve: {
+		extensions: ['.js', '.jsx']
+	}
 };

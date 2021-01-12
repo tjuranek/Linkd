@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { AppLoader } from './components/app-loader.jsx';
 import { AppRouter } from './router';
 import { store } from './store/index';
+import 'normalize.css';
 
 const Loading = () => <div>LOADING</div>;
 
