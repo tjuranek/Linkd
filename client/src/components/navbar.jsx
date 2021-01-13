@@ -1,4 +1,4 @@
-import { Grid, makeStyles } from '@material-ui/core';
+import { Box, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { AccountButtons } from './account-buttons';
 import { Logo } from './logo';
@@ -13,12 +13,16 @@ export const Navbar = props => {
 	const classes = useStyles();
 
 	return (
-		<Grid container xs={12}>
-			<Grid item xs={3}>
-				<Logo />
+		<Grid container justify='space-between' alignItems='center' xs={12}>
+			<Grid item>
+				<Box py={1}>
+					<Logo />
+				</Box>
 			</Grid>
-			<Grid item xs={9}>
-				<AccountButtons />
+			<Grid item>
+				<Box py={1}>
+					<AccountButtons />
+				</Box>
 			</Grid>
 		</Grid>
 	);

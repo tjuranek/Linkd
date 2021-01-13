@@ -5,6 +5,7 @@ import { Navbar } from '../../components/navbar';
 const useStyles = makeStyles({
 	page: {
 		backgroundColor: '#E5E5E5',
+		padding: '0 10%',
 		minHeight: '100vh'
 	}
 });
