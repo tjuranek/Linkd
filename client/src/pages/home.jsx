@@ -1,20 +1,29 @@
-import { Grid } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { AddLinkForm } from '../components/add-link-form';
 import { MarketingCard } from '../components/marketing-card';
 import { Navbar } from '../components/navbar';
 import { Tagline } from '../components/tagline';
 
+const useStyles = makeStyles({
+	page: {
+		backgroundColor: '#E5E5E5',
+		minHeight: '100vh'
+	}
+});
+
 export const Home = () => {
+	const classes = useStyles();
+
 	return (
-		<div>
+		<div className={classes.page}>
 			<Navbar />
 
 			<Tagline />
 
 			<AddLinkForm />
 
-			<Grid container spacing={3}>
+			<Grid container xs={12}>
 				<Grid item xs={12} md={4}>
 					<MarketingCard title='test' description='testing' />
 				</Grid>
