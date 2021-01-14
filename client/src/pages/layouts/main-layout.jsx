@@ -5,8 +5,11 @@ import { Navbar } from '../../components/navbar';
 const useStyles = makeStyles({
 	page: {
 		backgroundColor: '#E5E5E5',
+		display: 'flex',
 		padding: '0 10%',
-		minHeight: '100vh'
+		minHeight: '100vh',
+		justifyItems: 'stretch',
+		flexDirection: 'column'
 	}
 });
 

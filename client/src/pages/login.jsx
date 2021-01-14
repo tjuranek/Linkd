@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { MainLayout } from './layouts/main-layout';
 
 export const Login = () => {
-	const [state, setState] = useState();
-
-	return <h1>Login</h1>;
+	return (
+		<MainLayout>
+			<p>login</p>
+		</MainLayout>
+	);
 };

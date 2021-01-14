@@ -1,7 +1,24 @@
-import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core';
+import React from 'react';
+import { RegistrationForm } from '../components/registration-form';
+import { MainLayout } from './layouts/main-layout';
 
+const useStyles = makeStyles({
+	content: {
+		alignItems: 'center',
+		display: 'flex',
+		flexGrow: '1',
+		justifyContent: 'center'
+	}
+});
 export const Register = () => {
-	const [state, setState] = useState();
+	const classes = useStyles();
 
-	return <h1>Register</h1>;
+	return (
+		<MainLayout>
+			<div className={classes.content}>
+				<RegistrationForm />
+			</div>
+		</MainLayout>
+	);
 };
