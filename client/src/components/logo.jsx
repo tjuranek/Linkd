@@ -1,11 +1,15 @@
 import { makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
+import { Link } from './link';
 
 const useStyles = makeStyles({
 	logo: {
 		fontFamily: 'Montserrat',
 		fontWeight: 'bolder',
 		letterSpacing: '0.05em'
+	},
+	link: {
+		color: 'black'
 	}
 });
 
@@ -14,7 +18,9 @@ export const Logo = () => {
 
 	return (
 		<Typography variant='h3' className={classes.logo}>
-			LINKD
+			<Link to='/'>
+				<span className={classes.link}>LINKD</span>
+			</Link>
 		</Typography>
 	);
 };
