@@ -8,11 +8,9 @@ import 'normalize.css';
 import './lib/Montserrat-Regular.ttf';
 import './index.css';
 
-const Loading = () => <div>LOADING</div>;
-
 render(
 	<Provider store={store}>
-		<AppLoader loadingComponent={<Loading />} minimumLoadingTime={2500}>
+		<AppLoader minimumLoadingTime={500}>
 			<AppRouter />
 		</AppLoader>
 	</Provider>,
