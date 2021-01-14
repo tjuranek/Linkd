@@ -28,7 +28,7 @@ export const registerAccount = (firstName, lastName, email, password) => {
 
 		const response = await axios({
 			method: 'post',
-			url: 'http://localhost:1234/accounts/register',
+			url: `${process.env.API_URL}/accounts/register`,
 			data: {
 				email: 'test@test.com',
 				firstName: 'hypa',
@@ -52,7 +52,7 @@ export const getAccountInfo = () => {
 
 		const response = await axios({
 			method: 'get',
-			url: 'http://localhost:1234/accounts/info',
+			url: `${process.env.API_URL}/accounts/info`,
 			headers: {
 				Authorization: `Bearer ${token}`,
 				'Content-Type': 'application/json'
