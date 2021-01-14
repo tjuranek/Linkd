@@ -11,6 +11,7 @@ const useStyles = makeStyles({
 		justifyContent: 'center'
 	}
 });
+
 export const Register = () => {
 	const classes = useStyles();
 
