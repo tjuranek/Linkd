@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core';
+import { Box, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { RegistrationForm } from '../components/registration-form';
 import { MainLayout } from './layouts/main-layout';
@@ -17,7 +17,22 @@ export const Register = () => {
 	return (
 		<MainLayout>
 			<div className={classes.content}>
-				<RegistrationForm />
+				<Grid
+					container
+					direction='column'
+					justifyContent='center'
+					alignItems='center'
+				>
+					<Grid item>
+						<p>Hello there!</p>
+					</Grid>
+
+					<Grid item>
+						<Box mt={1}>
+							<RegistrationForm />
+						</Box>
+					</Grid>
+				</Grid>
 			</div>
 		</MainLayout>
 	);
