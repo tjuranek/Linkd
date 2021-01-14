@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "webpack serve --env development --config webpack.config.dev.js",
 		"start": "node server.js",
-		"heroku-postbuild": "webpack --mode production"
+		"heroku-postbuild": "webpack --mode production --config webpack.config.js"
 	},
 	"keywords": [],
 	"author": "tjuranek",
