@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:1234';
-
-const apiClient = axios.create({
-	baseUrl: apiUrl
+export const apiClient = axios.create({
+	baseURL: process.env.API_URL
 });
 
 apiClient.interceptors.request.use(request => {
@@ -16,6 +14,7 @@ apiClient.interceptors.request.use(request => {
 apiClient.interceptors.response.use(
 	response => response,
 	error => {
+		return error;
 		// TODO: if 401 clear the token and logout
 	}
 );

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { apiClient } from '../../infrastructure/api-client';
 
 const SET_IS_LOADED = 'SET_IS_LOADED';
 
@@ -9,7 +9,7 @@ const initialState = {
 export const app = (state = initialState, action = {}) => {
 	switch (action.type) {
 		case SET_IS_LOADED: {
-			return { ...state, isLoaded: true };
+			return { ...state, ...action.payload };
 		}
 		default: {
 			return state;
@@ -18,19 +18,16 @@ export const app = (state = initialState, action = {}) => {
 };
 
 export const getToken = () => {
-	return async dispatch => {
-		const response = await axios({
-			method: 'post',
-			url: `${process.env.API_URL}/accounts/createghost`
-		});
-
-		const token = response.data.token;
+	return async () => {
+		const response = await apiClient.get(`/accounts/createghost`);
+		const { token } = response.data;
 
 		localStorage.setItem('token', token);
-		dispatch({ type: SET_IS_LOADED, payload: { token } });
 	};
 };
 
-export const setToken = token => {
-	return { type: SET_IS_LOADED, payload: { token, isLoaded: true } };
+export const setIsLoaded = isLoaded => {
+	return async dispatch => {
+		dispatch({ type: SET_IS_LOADED, payload: { isLoaded } });
+	};
 };

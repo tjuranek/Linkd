@@ -1,7 +1,13 @@
 import { store } from './index';
-import { getToken, setToken } from './ducks/app';
+import { getToken, setIsLoaded } from './ducks/app';
 
 export const hydrateStore = () => {
 	const token = localStorage.getItem('token');
-	token ? store.dispatch(setToken(token)) : store.dispatch(getToken());
+
+	if (token) {
+		store.dispatch(setIsLoaded(true));
+	} else {
+		store.dispatch(getToken());
+		store.dispatch(setIsLoaded(true));
+	}
 };

@@ -12,7 +12,7 @@ export const AccountsRouter = new express.Router();
 /**
  * Creates a new ghost account, returning a new access token.
  */
-AccountsRouter.post('/createghost', async (req, res) => {
+AccountsRouter.get('/createghost', async (req, res) => {
 	const token = await createGhostAccountAction();
 
 	return res.status(200).json({ token });
