@@ -6,13 +6,10 @@ import { Tagline } from '../components/tagline';
 import { MainLayout } from './layouts/main-layout';
 
 export const Home = () => {
-	const test = process.env.API_URL;
-
 	return (
 		<MainLayout>
 			<Box mt={5}>
 				<Tagline />
-				<p>{test}</p>
 			</Box>
 
 			<Box mt={3}>
