@@ -18,10 +18,10 @@ export const LoginForm = () => {
 
 	const validate = updates => {
 		const futureState = { ...state, ...updates };
-		const errors = [];
+		let errors = [];
 
-		for (field of FIELDS) {
-			if (!futureState[field.ToLowercase()]) {
+		for (const field in FIELDS) {
+			if (!futureState[field.toLowerCase()]) {
 				errors.push(FIELDS[field]);
 			}
 		}
@@ -30,17 +30,19 @@ export const LoginForm = () => {
 	};
 
 	const setValue = (type, value) => {
-		const updates = {};
+		let updates = {};
 		switch (type) {
 			case FIELDS.Email:
 				updates = { email: value };
+				break;
 			case FIELDS.Password:
 				updates = { password: value };
+				break;
 		}
 
 		const errors = validate(updates);
 
-		setState({ ...state, ...updates, ...errors });
+		setState({ ...state, ...updates, ...{ errors: errors } });
 	};
 
 	const submit = () => {
@@ -58,8 +60,15 @@ export const LoginForm = () => {
 						label='Email'
 						variant='outlined'
 						onChange={e => setValue(FIELDS.Email, e.target.value)}
-						error={state.errors.includes(FIELDS.Email)}
-						helperText='MAKE IT VALID YOU DUMB GOAT'
+						error={
+							state.showErrors &&
+							state.errors.includes(FIELDS.Email)
+						}
+						helperText={
+							state.showErrors &&
+							state.errors.includes(FIELDS.Email) &&
+							'Please enter a valid email.'
+						}
 						fullWidth
 					/>
 				</Box>
@@ -73,10 +82,15 @@ export const LoginForm = () => {
 						onChange={e =>
 							setValue(FIELDS.Password, e.target.value)
 						}
-						error={state.errors.includes(FIELDS.Password)}
-						helperText='MAKE IT VALID YOU DUMB GOAT'
-						error={state.password.error}
-						helperText={state.password.error}
+						error={
+							state.showErrors &&
+							state.errors.includes(FIELDS.Password)
+						}
+						helperText={
+							state.showErrors &&
+							state.errors.includes(FIELDS.Password) &&
+							'Please enter a password.'
+						}
 						fullWidth
 					/>
 				</Box>
