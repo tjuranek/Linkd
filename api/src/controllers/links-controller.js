@@ -13,9 +13,9 @@ export const LinksRouter = new express.Router();
  */
 LinksRouter.post('/create', async (req, res) => {
 	const { url } = req.body;
-	await createLinkAction(req.userId, url);
+	const link = await createLinkAction(req.userId, url);
 
-	return res.sendStatus(200);
+	return res.status(200).json({ link });
 });
 
 /**

@@ -12,7 +12,7 @@ import {
  * @param {String} url
  */
 export const createLinkAction = async (accountId, url) => {
-	await createLink(accountId, url);
+	return await createLink(accountId, url);
 };
 
 /**
