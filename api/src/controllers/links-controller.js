@@ -21,7 +21,7 @@ LinksRouter.post('/create', async (req, res) => {
 /**
  * Retrieves a link by it's key.
  */
-LinksRouter.get('/getByKey', async (req, res) => {
+LinksRouter.post('/getByKey', async (req, res) => {
 	const { key } = req.body;
 	const link = await getLinkByKeyAction(key);
 

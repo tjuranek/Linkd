@@ -32,20 +32,18 @@ export const createLink = url => {
 		const response = await apiClient.post('/links/create', { url });
 		const { link } = response.data;
 
-		debugger;
-
 		dispatch({ type: SET_LAST_CREATED_LINK, payload: link });
 	};
 };
 
 export const getLinkByKey = key => {
 	return async dispatch => {
-		const response = await apiClient.get('/links/getByKey', {
-			data: {
-				key
-			}
+		const response = await apiClient.post('/links/getByKey', {
+			key
 		});
 		const { link } = response.data;
+
+		debugger;
 
 		dispatch({ type: SET_LAST_RETRIEVED_LINK, payload: link });
 	};

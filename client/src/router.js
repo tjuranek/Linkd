@@ -4,6 +4,7 @@ import { Dashboard } from './pages/dashboard';
 import { Home } from './pages/home';
 import { Login } from './pages/login';
 import { Logout } from './pages/logout';
+import { Redirector } from './pages/redirector';
 import { Register } from './pages/register';
 
 export const AppRouter = () => {
@@ -25,8 +26,8 @@ export const AppRouter = () => {
 				<Route exact path='/logout'>
 					<Logout />
 				</Route>
-				<Route path='/:key' component={Home}>
-					<Home />
+				<Route path='/:key'>
+					<Redirector />
 				</Route>
 			</Switch>
 		</BrowserRouter>
