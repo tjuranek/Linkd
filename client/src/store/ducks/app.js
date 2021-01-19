@@ -19,10 +19,9 @@ export const app = (state = initialState, action = {}) => {
 
 export const getToken = () => {
 	return async () => {
-		/* 		const response = await apiClient.get(`/accounts/createghost`);
-		const { token } = response.data; */
+		const response = await apiClient.get(`/accounts/createghost`);
+		const { token } = response.data;
 
-		const token = 'deletethislater';
 		localStorage.setItem('token', token);
 	};
 };

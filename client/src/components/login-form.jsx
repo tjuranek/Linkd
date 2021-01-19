@@ -2,8 +2,8 @@ import { Box, Button, Grid, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 
 const FIELDS = {
-	Email: 'Email',
-	Password: 'Password'
+	Email: 'email',
+	Password: 'password'
 };
 
 const initialState = {
@@ -30,23 +30,14 @@ export const LoginForm = () => {
 	};
 
 	const setValue = (type, value) => {
-		let updates = {};
-		switch (type) {
-			case FIELDS.Email:
-				updates = { email: value };
-				break;
-			case FIELDS.Password:
-				updates = { password: value };
-				break;
-		}
-
+		const updates = { [type]: value };
 		const errors = validate(updates);
 
-		setState({ ...state, ...updates, ...{ errors: errors } });
+		setState({ ...state, ...updates, ...{ errors } });
 	};
 
 	const submit = () => {
-		state.errors
+		state.errors.length
 			? setState({ ...state, showErrors: true })
 			: alert('submit');
 	};

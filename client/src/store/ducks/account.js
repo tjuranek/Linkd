@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { setToken } from './app';
+import { apiClient } from '../../infrastructure/api-client';
 
 const SET_ACCOUNT_INFO = 'SET_ACCOUNT_INFO';
 
@@ -22,45 +21,21 @@ export const account = (state = initialState, action = {}) => {
 };
 
 export const registerAccount = (firstName, lastName, email, password) => {
-	return async (dispatch, getState) => {
-		const state = getState();
-		const token = state.app.token;
-
-		const response = await axios({
-			method: 'post',
-			url: `${process.env.API_URL}/accounts/register`,
-			data: {
-				email: 'test@test.com',
-				firstName: 'hypa',
-				lastName: 'hypa',
-				password: 'password'
-			},
-			headers: {
-				Authorization: `Bearer ${token}`,
-				'Content-Type': 'application/json'
-			}
+	return async () => {
+		const response = await apiClient.post('/accounts/register', {
+			firstName,
+			lastName,
+			email,
+			password
 		});
 
-		dispatch(setToken(response.data.token));
+		debugger;
 	};
 };
 
 export const getAccountInfo = () => {
-	return async (dispatch, getState) => {
-		const state = getState();
-		const token = state.app.token;
-
-		const response = await axios({
-			method: 'get',
-			url: `${process.env.API_URL}/accounts/info`,
-			headers: {
-				Authorization: `Bearer ${token}`,
-				'Content-Type': 'application/json'
-			}
-		});
-
-		debugger;
-
+	return async dispatch => {
+		const response = await apiClient.get('/acounts/info');
 		const { account } = response.data;
 
 		const info = {
