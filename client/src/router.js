@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Dashboard } from './pages/dashboard';
 import { Home } from './pages/home';
 import { Login } from './pages/login';
+import { Logout } from './pages/logout';
 import { Register } from './pages/register';
 
 export const AppRouter = () => {
@@ -20,6 +21,9 @@ export const AppRouter = () => {
 				</Route>
 				<Route exact path='/dashboard'>
 					<Dashboard />
+				</Route>
+				<Route exact path='/logout'>
+					<Logout />
 				</Route>
 				<Route path='/:key' component={Home}>
 					<Home />

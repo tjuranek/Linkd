@@ -1,6 +1,7 @@
 import { apiClient } from '../../infrastructure/api-client';
 
 const SET_ACCOUNT_INFO = 'SET_ACCOUNT_INFO';
+const RESET_ACCOUNT_STATE = 'RESET_ACCOUNT_STATE';
 
 const initialState = {
 	firstName: '',
@@ -13,6 +14,9 @@ export const account = (state = initialState, action = {}) => {
 	switch (action.type) {
 		case SET_ACCOUNT_INFO: {
 			return { ...state, ...action.payload };
+		}
+		case RESET_ACCOUNT_STATE: {
+			return initialState;
 		}
 		default: {
 			return state;
@@ -51,5 +55,13 @@ export const getAccountInfo = () => {
 			type: SET_ACCOUNT_INFO,
 			payload: { ...info, isLoggedIn: true }
 		});
+	};
+};
+
+export const logout = () => {
+	return dispatch => {
+		localStorage.removeItem('token');
+
+		dispatch({ type: RESET_ACCOUNT_STATE });
 	};
 };
