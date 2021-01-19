@@ -47,7 +47,6 @@ export const login = (email, password) => {
 			password
 		});
 
-		debugger;
 		const { token } = response.data;
 		localStorage.setItem('token', token);
 
