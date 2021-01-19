@@ -45,6 +45,7 @@ AccountsRouter.post('/register', async (req, res) => {
 });
 
 AccountsRouter.get('/info', async (req, res) => {
+	console.log(req.userId);
 	const account = await getAccountInfoAction(req.userId);
 
 	return res.status(200).json({ account });

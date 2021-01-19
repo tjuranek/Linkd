@@ -3,10 +3,10 @@ import { apiClient } from '../../infrastructure/api-client';
 const SET_ACCOUNT_INFO = 'SET_ACCOUNT_INFO';
 
 const initialState = {
-	id: '',
 	firstName: '',
 	lastName: '',
-	email: ''
+	email: '',
+	isLoggedIn: false
 };
 
 export const account = (state = initialState, action = {}) => {
@@ -21,7 +21,7 @@ export const account = (state = initialState, action = {}) => {
 };
 
 export const registerAccount = (firstName, lastName, email, password) => {
-	return async () => {
+	return async dispatch => {
 		const response = await apiClient.post('/accounts/register', {
 			firstName,
 			lastName,
@@ -29,22 +29,27 @@ export const registerAccount = (firstName, lastName, email, password) => {
 			password
 		});
 
-		debugger;
+		const { token } = response.data;
+		localStorage.setItem('token', token);
+
+		dispatch(getAccountInfo());
 	};
 };
 
 export const getAccountInfo = () => {
 	return async dispatch => {
-		const response = await apiClient.get('/acounts/info');
+		const response = await apiClient.get('/accounts/info');
 		const { account } = response.data;
 
 		const info = {
-			id: account.id,
 			email: account.email,
 			firstName: account.firstName,
 			lastName: account.lastName
 		};
 
-		dispatch({ type: SET_ACCOUNT_INFO, payload: info });
+		dispatch({
+			type: SET_ACCOUNT_INFO,
+			payload: { ...info, isLoggedIn: true }
+		});
 	};
 };
