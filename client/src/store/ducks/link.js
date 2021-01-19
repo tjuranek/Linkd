@@ -32,6 +32,8 @@ export const createLink = url => {
 		const response = await apiClient.post('/links/create', { url });
 		const { link } = response.data;
 
+		debugger;
+
 		dispatch({ type: SET_LAST_CREATED_LINK, payload: link });
 	};
 };
