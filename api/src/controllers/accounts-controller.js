@@ -21,7 +21,7 @@ AccountsRouter.get('/createghost', async (req, res) => {
 /**
  * Validates login credentials, return a new access token if valid.
  */
-AccountsRouter.get('/login', async (req, res) => {
+AccountsRouter.post('/login', async (req, res) => {
 	const { email, password } = req.body;
 	const token = await loginAccountAction(email, password);
 
@@ -45,7 +45,6 @@ AccountsRouter.post('/register', async (req, res) => {
 });
 
 AccountsRouter.get('/info', async (req, res) => {
-	console.log(req.userId);
 	const account = await getAccountInfoAction(req.userId);
 
 	return res.status(200).json({ account });

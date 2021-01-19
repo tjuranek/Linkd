@@ -1,5 +1,8 @@
 import { Box, Button, Grid, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { login } from '../store/ducks/account';
 
 const FIELDS = {
 	Email: 'email',
@@ -15,6 +18,8 @@ const initialState = {
 
 export const LoginForm = () => {
 	const [state, setState] = useState(initialState);
+	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const validate = updates => {
 		const futureState = { ...state, ...updates };
@@ -39,7 +44,10 @@ export const LoginForm = () => {
 	const submit = () => {
 		state.errors.length
 			? setState({ ...state, showErrors: true })
-			: alert('submit');
+			: (() => {
+					dispatch(login(state.email, state.password));
+					history.push('/dashboard');
+			  })();
 	};
 
 	return (

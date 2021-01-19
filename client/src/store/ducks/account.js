@@ -40,21 +40,38 @@ export const registerAccount = (firstName, lastName, email, password) => {
 	};
 };
 
+export const login = (email, password) => {
+	return async dispatch => {
+		const response = await apiClient.post('/accounts/login', {
+			email,
+			password
+		});
+
+		debugger;
+		const { token } = response.data;
+		localStorage.setItem('token', token);
+
+		dispatch(getAccountInfo());
+	};
+};
+
 export const getAccountInfo = () => {
 	return async dispatch => {
 		const response = await apiClient.get('/accounts/info');
 		const { account } = response.data;
 
-		const info = {
-			email: account.email,
-			firstName: account.firstName,
-			lastName: account.lastName
-		};
+		if (account.type !== 1) {
+			const info = {
+				email: account.email,
+				firstName: account.firstName,
+				lastName: account.lastName
+			};
 
-		dispatch({
-			type: SET_ACCOUNT_INFO,
-			payload: { ...info, isLoggedIn: true }
-		});
+			dispatch({
+				type: SET_ACCOUNT_INFO,
+				payload: { ...info, isLoggedIn: true }
+			});
+		}
 	};
 };
 

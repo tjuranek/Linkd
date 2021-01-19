@@ -14,7 +14,6 @@ apiClient.interceptors.request.use(request => {
 apiClient.interceptors.response.use(
 	response => response,
 	error => {
-		debugger;
 		return error;
 		// TODO: if 401 clear the token and logout
 	}
