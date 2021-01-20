@@ -4,6 +4,7 @@ import { authentication } from '../middleware/authentication-middleware.js';
 import { errorHandler } from '../middleware/error-handler-middleware.js';
 import { AccountsRouter } from './accounts-controller.js';
 import { LinksRouter } from './links-controller.js';
+import { StatisticsRouter } from './statistics-controller.js';
 
 export const MainRouter = new express.Router();
 
@@ -12,5 +13,6 @@ MainRouter.use(authentication.unless({ path: ['/accounts/createghost'] }));
 
 MainRouter.use('/accounts', AccountsRouter);
 MainRouter.use('/links', LinksRouter);
+MainRouter.use('/statistics', StatisticsRouter);
 
 MainRouter.use(errorHandler);
