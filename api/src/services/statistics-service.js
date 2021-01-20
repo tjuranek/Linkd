@@ -1,4 +1,3 @@
-import { Link } from '../db/models/link.js';
 import { Statistic } from '../db/models/statistic.js';
 
 export const createStatistic = async (linkKey, type) => {
@@ -6,5 +5,5 @@ export const createStatistic = async (linkKey, type) => {
 };
 
 export const getStatisticsByLink = async linkKey => {
-	return await Link.find({ linkKey });
+	return await Statistic.find({ linkKey });
 };

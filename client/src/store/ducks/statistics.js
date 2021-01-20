@@ -9,7 +9,7 @@ const initialState = {
 export const statistics = (state = initialState, action = {}) => {
 	switch (action.type) {
 		case SET_STATISTICS: {
-			return { ...state, ...action.payload };
+			return { ...state, statistics: action.payload };
 		}
 		default: {
 			return state;
@@ -28,11 +28,13 @@ export const createStatistic = key => {
 
 export const getStatistics = key => {
 	return async dispatch => {
+		debugger;
 		const response = await apiClient.post('/statistics/getByLink', {
 			key
 		});
 		const { statistics } = response.data;
+		debugger;
 
-		dispatch({ type: SET_STATISTICS, payload: { statistics } });
+		dispatch({ type: SET_STATISTICS, payload: statistics });
 	};
 };
