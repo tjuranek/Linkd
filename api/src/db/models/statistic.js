@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { getUTCDateTime } from '../../services/datetime-service.js';
 
 const statisticSchema = mongoose.Schema({
-	linkId: {
+	linkKey: {
 		type: String,
 		required: true
 	},

@@ -7,15 +7,15 @@ import {
 export const StatisticsRouter = new express.Router();
 
 StatisticsRouter.post('/create', async (req, res) => {
-	const { linkId, type } = req.body;
-	await createStatisticAction(linkId, type);
+	const { key, type } = req.body;
+	await createStatisticAction(key, type);
 
 	return res.sendStatus(200);
 });
 
 StatisticsRouter.post('/getByLink', async (req, res) => {
-	const { linkId } = req.body;
-	const statistics = await getStatisticsByLinkAction(linkId);
+	const { key } = req.body;
+	const statistics = await getStatisticsByLinkAction(key);
 
 	return res.status(200).json({ statistics });
 });

@@ -3,10 +3,10 @@ import {
 	getStatisticsByLink
 } from '../services/statistics-service.js';
 
-export const createStatisticAction = async (linkId, type) => {
-	return await createStatistic(linkId, type);
+export const createStatisticAction = async (linkKey, type) => {
+	return await createStatistic(linkKey, type);
 };
 
-export const getStatisticsByLinkAction = async linkId => {
-	return await getStatisticsByLink(linkId);
+export const getStatisticsByLinkAction = async linkKey => {
+	return await getStatisticsByLink(linkKey);
 };
