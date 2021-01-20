@@ -33,6 +33,7 @@ export const createLink = url => {
 		const { link } = response.data;
 
 		dispatch({ type: SET_LAST_CREATED_LINK, payload: link });
+		dispatch(getLinksByAccount());
 	};
 };
 

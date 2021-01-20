@@ -58,9 +58,7 @@ export const AddLinkForm = props => {
 	const submit = () => {
 		state.errors.length
 			? setState({ ...state, showErrors: true })
-			: (() => {
-					dispatch(createLink(state.link));
-			  })();
+			: dispatch(createLink(state.link));
 	};
 
 	const classes = useStyles();

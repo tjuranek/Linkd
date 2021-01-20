@@ -6,8 +6,6 @@ import { LinkList } from '../components/link-list';
 import { MainLayout } from './layouts/main-layout';
 
 export const Dashboard = () => {
-	const firstName = useSelector(state => state.account.firstName);
-
 	return (
 		<MainLayout>
 			<Grid container spacing={1} xs={12}>
