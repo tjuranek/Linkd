@@ -28,12 +28,10 @@ export const createStatistic = key => {
 
 export const getStatistics = key => {
 	return async dispatch => {
-		debugger;
 		const response = await apiClient.post('/statistics/getByLink', {
 			key
 		});
 		const { statistics } = response.data;
-		debugger;
 
 		dispatch({ type: SET_STATISTICS, payload: statistics });
 	};
