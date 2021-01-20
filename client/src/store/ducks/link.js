@@ -56,3 +56,13 @@ export const getLinksByAccount = () => {
 		dispatch({ type: SET_LINKS, payload: links });
 	};
 };
+
+export const deleteLink = id => {
+	return async dispatch => {
+		await apiClient.post('/links/delete', {
+			id
+		});
+
+		dispatch(getLinksByAccount());
+	};
+};

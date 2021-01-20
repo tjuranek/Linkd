@@ -1,4 +1,3 @@
-import { Account } from '../db/models/account.js';
 import { Link } from '../db/models/link.js';
 import { getUTCDateTime } from '../services/datetime-service.js';
 
@@ -26,7 +25,9 @@ export const getLinkByKey = async key => {
  * @param {String} accountId
  */
 export const getLinksByAccount = async accountId => {
-	return await Link.find({ accountId });
+	return await (await Link.find({ accountId })).filter(
+		link => !link.dateDeleted
+	);
 };
 
 /**

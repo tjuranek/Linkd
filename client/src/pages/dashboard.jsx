@@ -1,6 +1,5 @@
 import { Box, Card, CardContent, Grid, Typography } from '@material-ui/core';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { AddLinkForm } from '../components/add-link-form';
 import { LinkList } from '../components/link-list';
 import { MainLayout } from './layouts/main-layout';
