@@ -43,8 +43,6 @@ export const getLinkByKey = key => {
 		});
 		const { link } = response.data;
 
-		debugger;
-
 		dispatch({ type: SET_LAST_RETRIEVED_LINK, payload: link });
 	};
 };
