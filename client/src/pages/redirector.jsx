@@ -19,8 +19,7 @@ export const Redirector = () => {
 			// using replace here so hitting the back button doesn't cause the redirect
 			// again. if the link doesn't include the web protocal prepent it with
 			// two slashes
-			//window.location.replace(!link.includes('//') ? '//' + link : link);
-			alert('got it');
+			window.location.replace(!link.includes('//') ? '//' + link : link);
 		}
 	}, [link]);
 
