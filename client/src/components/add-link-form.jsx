@@ -30,6 +30,7 @@ const useStyles = makeStyles({
 	},
 	button: {
 		height: '100%',
+		width: '100%',
 		backgroundColor: '#9615db',
 		boxShadow: 'none',
 		'&:hover': {
@@ -86,7 +87,7 @@ export const AddLinkForm = props => {
 	return (
 		<div>
 			<Grid container justify='flex-start' alignItems='stretch' xs={12}>
-				<Grid item xs={4}>
+				<Grid item xs={8}>
 					<TextField
 						autoComplete='off'
 						className={classes.textField}
@@ -107,7 +108,7 @@ export const AddLinkForm = props => {
 						}
 					/>
 				</Grid>
-				<Grid item>
+				<Grid item xs={4}>
 					<Box ml={1} height='100%'>
 						<Button
 							className={classes.button}

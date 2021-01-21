@@ -13,7 +13,11 @@ export const Home = () => {
 			</Box>
 
 			<Box mt={3}>
-				<AddLinkForm />
+				<Grid container xs={12}>
+					<Grid item xs={6}>
+						<AddLinkForm />
+					</Grid>
+				</Grid>
 			</Box>
 
 			<Box mt={5}>
