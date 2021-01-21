@@ -3,7 +3,8 @@ import React from 'react';
 
 const useStyles = makeStyles({
 	card: {
-		height: '100%'
+		height: '100%',
+		boxShadow: 'none'
 	}
 });
 

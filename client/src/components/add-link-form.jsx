@@ -11,11 +11,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createLink } from '../store/ducks/link';
 
 const useStyles = makeStyles({
-	input: {
-		border: '2px solid black'
+	textField: {
+		'& .MuiOutlinedInput-root': {
+			backgroundColor: '#ffffff',
+			'& fieldset': {
+				borderRadius: '2px',
+				borderColor: '#000000',
+				borderWidth: '2px'
+			}
+		},
+		'& .Mui-focused': {
+			color: '#000000',
+			'& .MuiOutlinedInput-notchedOutline': {
+				borderColor: '#000000',
+				borderWidth: '2px'
+			}
+		}
 	},
 	button: {
-		height: '100%'
+		height: '100%',
+		backgroundColor: '#9615db',
+		boxShadow: 'none',
+		'&:hover': {
+			backgroundColor: '#7810AF',
+			boxShadow: 'none'
+		}
 	}
 });
 
@@ -68,6 +88,8 @@ export const AddLinkForm = props => {
 			<Grid container justify='flex-start' alignItems='stretch' xs={12}>
 				<Grid item xs={4}>
 					<TextField
+						autoComplete='off'
+						className={classes.textField}
 						id='add-link-form-textfield'
 						label='URL'
 						variant='outlined'
@@ -83,11 +105,6 @@ export const AddLinkForm = props => {
 							state.errors.includes(FIELDS.Link) &&
 							'Please enter a valid link.'
 						}
-						InputProps={{
-							classes: {
-								notchedOutline: classes.input
-							}
-						}}
 					/>
 				</Grid>
 				<Grid item>

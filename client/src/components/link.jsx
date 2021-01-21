@@ -4,8 +4,12 @@ import React from 'react';
 
 const useStyles = makeStyles({
 	link: {
-		color: '#8B8BEA',
-		textDecoration: 'none'
+		color: '#9615db',
+		textDecoration: 'none',
+		'&:hover': {
+			color: '#7810AF',
+			fontWeight: 'bold'
+		}
 	}
 });
 

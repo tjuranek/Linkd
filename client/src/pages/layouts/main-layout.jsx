@@ -4,7 +4,7 @@ import { Navbar } from '../../components/navbar';
 
 const useStyles = makeStyles({
 	page: {
-		backgroundColor: '#E5E5E5',
+		backgroundImage: 'linear-gradient(#ffffff, #2d3032)',
 		display: 'flex',
 		padding: '0 10%',
 		minHeight: '100vh',
